@@ -22,5 +22,31 @@
 
 <dt>Updated at</dt>
 <dd><%= @the_director.updated_at%> </dd>
-
 </dl>
+
+<% matching_movies =  Movie.where( {:director_id => @the_director.id} )%>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Image</th>
+<th>Title</th>
+<th>Year</th>
+<th>Director</th>
+<th></th>
+</tr>
+</table>
+
+<%matching_movies.each do |a_movie|%>
+<tr>
+<td><%= a_movie.id%></td>
+<td><image src="<%= a_movie.image%>" width="200"></td>
+<td><%= a_movie.title%></td>
+<td><%= a_movie.year%></td>
+<td><%= @the_director.name%></td>
+<td>Show details</td>
+
+</tr>
+<%end%>
+
+</table>
