@@ -5,48 +5,54 @@
 <hr>
 
 <dl>
-<dt>Name</dt>
-<dd><%= @the_director.name%> </dd>
+  <dt>Name</dt>
+  <dd><%= @the_director.name%> </dd>
 
-<dt>Dob</dt>
-<dd><%= @the_director.dob%> </dd>
+  <dt>Dob</dt>
+  <dd><%= @the_director.dob%> </dd>
 
-<dt>Bio</dt>
-<dd><%= @the_director.bio%> </dd>
+  <dt>Bio</dt>
+  <dd><%= @the_director.bio%> </dd>
 
-<dt>Image</dt>
-<dd><img src"<%= @the_director.image%>" width="200"></dd>
+  <dt>Image</dt>
+  <dd><img src"<%= @the_director.image%>" width="200"></dd>
 
-<dt>Created at</dt>
-<dd><%= @the_director.created_at%> </dd>
+  <dt>Created at</dt>
+  <dd><%= @the_director.created_at%> </dd>
 
-<dt>Updated at</dt>
-<dd><%= @the_director.updated_at%> </dd>
+  <dt>Updated at</dt>
+  <dd><%= @the_director.updated_at%> </dd>
 </dl>
+
+<h2>Filmography</h2>
 
 <% matching_movies =  Movie.where( {:director_id => @the_director.id} )%>
 
-<table>
-<tr>
-<th>ID</th>
-<th>Image</th>
-<th>Title</th>
-<th>Year</th>
-<th>Director</th>
-<th></th>
-</tr>
+<table border=>
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th></th>
+  </tr>
 </table>
 
 <%matching_movies.each do |a_movie|%>
-<tr>
-<td><%= a_movie.id%></td>
-<td><image src="<%= a_movie.image%>" width="200"></td>
-<td><%= a_movie.title%></td>
-<td><%= a_movie.year%></td>
-<td><%= @the_director.name%></td>
-<td>Show details</td>
+  <tr>
+    <td><%= a_movie.id%></td>
+    <td><image src="<%= a_movie.image%>" width="200"></td>
+      <td><%= a_movie.title%></td>
+      <td><%= a_movie.year%></td>
+      <td><%= @the_director.name%></td>
+      <td>
+        <a href="/movie/<%= a_movie.id%>">
+          Show details
+        </a>
+      </td>
 
-</tr>
-<%end%>
+    </tr>
+  <%end%>
 
 </table>
